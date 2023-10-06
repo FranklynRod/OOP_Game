@@ -7,8 +7,6 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
-
-
 addPhraseToDisplay(){
     const phraseSection = document.getElementById("phrase");
     const unorderedList = phraseSection.querySelector("ul");
@@ -17,15 +15,15 @@ addPhraseToDisplay(){
     
 
     for (const letter of this.phrase){
-        const listItem = document.querySelector("li");
+        const listItem = document.createElement("li");
         if (letter === " "){
             listItem.className = 'space';
             listItem.textContent = " ";
         } else{ 
             listItem.className = `hide letter ${letter}`
             listItem.textContent = letter}    
-             
-   unorderedList.appendChild(listItem);  
+
+        unorderedList.appendChild(listItem);  
     };
 }
 
@@ -34,16 +32,11 @@ checkLetter(letter){
 };
 
 showMatchedLetter(letter){
-    const selectedLetter = document.querySelector(`.letter.${letter}`);
+    const selectedLetters = document.querySelectorAll(`.letter.${letter}`);
 
-    for(const element of selectedLetter){
-        element.className.remove('hide');
-        element.className.add('show');
-    }
+    selectedLetters.forEach(element => {
+        element.classList.remove('hide');
+        element.classList.add('show');
+    });
 }
-
-
 };
-var newPhrase = new Phrase("Hello");
-newPhrase.addPhraseToDisplay();
-// console.log(display)

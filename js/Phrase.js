@@ -2,11 +2,12 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+
 class Phrase {
     constructor(phrase){
         this.phrase = phrase.toLowerCase();
     }
-
+//adds phrase to phrase display
 addPhraseToDisplay(){
     const phraseSection = document.getElementById("phrase");
     const unorderedList = phraseSection.querySelector("ul");
@@ -30,6 +31,7 @@ addPhraseToDisplay(){
 checkLetter(letter){
     return this.phrase.includes(letter);
 };
+
 
 showMatchedLetter(letter){
     const selectedLetters = document.querySelectorAll(`.letter.${letter}`);

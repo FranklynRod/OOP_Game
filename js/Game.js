@@ -13,7 +13,9 @@ class Game{
         this.activePhrase = null;
 
     };
+    //removes overlay and add phrase to the display to initate game
     startGame(){
+        this.resetGameBoard();
         var overlay = document.getElementById("overlay")
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
@@ -60,12 +62,13 @@ class Game{
         this.gameOver();
     }
 }
-
+    //check whether or not letters are hidden
     checkForWin(){
         const hiddenLetters = document.querySelectorAll('.hide');
         return hiddenLetters.length === 0;
     };
 
+    //initiate and change overlay based on win or lose
     gameOver(){
         var overlay = document.getElementById("overlay")
         overlay.style.display = 'flex';
@@ -84,6 +87,7 @@ class Game{
         }
     };
 
+    //reset board after a lose or win
     resetGameBoard() {
         const phraseUl = document.querySelector('#phrase ul');
         phraseUl.innerHTML = '';
@@ -99,14 +103,6 @@ class Game{
         heartImages.forEach(image => {
             image.src = 'images/liveHeart.png';
         });
-    }
-    startGame() {
-        this.resetGameBoard();
-    
-        var overlay = document.getElementById('overlay');
-        overlay.style.display = 'none';
-        this.activePhrase = this.getRandomPhrase();
-        this.activePhrase.addPhraseToDisplay();
     }
 
 }

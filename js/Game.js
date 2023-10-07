@@ -39,26 +39,27 @@ class Game{
             const winStatus = this.checkForWin();
             if (winStatus) {
                 this.gameOver(); 
+
             }
         };
 
     }
-    removeLife(){
-        const scoreboard = document.querySelectorAll(".tries");
-        for(const heart of scoreboard){
-            const heartImage = heart.querySelector("img");
-            if (heartImage.src.includes(`liveHeart.png`)){
-                heartImage.src = (`images/lostHeart.png`)
-                break;
-            };
-        this.missed++;
+   removeLife() {
+    const scoreboard = document.querySelectorAll(".tries");
+    for (const heart of scoreboard) {
+        const heartImage = heart.querySelector("img");
+        if (heartImage.src.includes("liveHeart.png")) {
+            heartImage.src = "images/lostHeart.png";
+            break;
+        }
+    }
+    
+    this.missed++;
 
-        if (this.missed === 5){
-            this.gameOver();
-        };
-
-    }};
-       
+    if (this.missed === 5) { 
+        this.gameOver();
+    }
+}
 
     checkForWin(){
         const hiddenLetters = document.querySelectorAll('.hide');
@@ -82,5 +83,30 @@ class Game{
             overlay.classList.add('lose');
         }
     };
+
+    resetGameBoard() {
+        const phraseUl = document.querySelector('#phrase ul');
+        phraseUl.innerHTML = '';
+    
+        const keyboardButtons = document.querySelectorAll('.key');
+        keyboardButtons.forEach(button => {
+            button.classList.remove('chosen', 'wrong');
+            button.classList.add('key');
+            button.disabled = false;
+        });
+    
+        const heartImages = document.querySelectorAll('.tries img');
+        heartImages.forEach(image => {
+            image.src = 'images/liveHeart.png';
+        });
+    }
+    startGame() {
+        this.resetGameBoard();
+    
+        var overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+    }
 
 }

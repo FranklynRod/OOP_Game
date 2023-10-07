@@ -9,3 +9,11 @@ startGame.addEventListener("click",(e) => {
     game.startGame();
 
 })
+
+const keyBoard = document.getElementById("qwerty");
+
+keyBoard.addEventListener('click', (e) =>{
+    if (e.target.classList.contains('key')){
+    game.handleInteraction(e.target);
+}
+});

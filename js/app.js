@@ -11,7 +11,6 @@ startGame.addEventListener("click",(e) => {
 
 })
 
-//interaction was handled when letters were clicked
 const keyBoard = document.getElementById("qwerty");
 
 keyBoard.addEventListener('click', (e) =>{
@@ -19,3 +18,11 @@ keyBoard.addEventListener('click', (e) =>{
     game.handleInteraction(e.target);
 }
 });
+// for users who tab to navigate site with sole use of keyboard
+const keyUpBoard = document.getElementById("qwerty");
+
+    keyUpBoard.addEventListener('keyup', (e) =>{
+    if (e.key === 'key'){
+        game.handleInteraction(e.target);
+        } 
+    });

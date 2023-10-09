@@ -46,6 +46,8 @@ class Game{
         };
 
     }
+
+    
    removeLife() {
     const scoreboard = document.querySelectorAll(".tries");
     for (const heart of scoreboard) {
@@ -104,5 +106,6 @@ class Game{
             image.src = 'images/liveHeart.png';
         });
     }
+
 
 }
